@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AEO Readiness Check · Can AI find your company?</title>
+    <meta
+      name="description"
+      content="Paste your URL. Get an AEO readiness score, see what answer engines can actually read, and get the exact code to fix what's broken."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AEO Readiness Check · Can AI find your company?" />
+    <meta property="og:description" content="Paste your URL. Get an AEO readiness score, see what answer engines can actually read, and get the exact code to fix what's broken." />
+    <meta property="og:image" content="./images/site-logo.png" />
+    <meta property="og:site_name" content="AEO Readiness Check" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="AEO Readiness Check · Can AI find your company?" />
+    <meta property="twitter:description" content="Paste your URL. Get an AEO readiness score, see what answer engines can actually read, and get the exact code to fix what's broken." />
+    <meta property="twitter:image" content="./images/site-logo.png" />
+
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/8f2a9d487bbbc60974cd132fc3a63862?family=Aeonik+Regular"
+    />
+    <!-- Base layout and typography stylesheet -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/lab-share.css" />
+    <!-- Application styles -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header id="header" class="fixed top-0 w-full bg-transparent z-50 transition-all duration-200">
+      <div class="container mx-auto px-8 py-8">
+        <div class="flex items-center justify-between">
+          <a href="/" class="logo-link flex items-center gap-2">
+            <img src="./images/site-logo.svg" alt="AEO" class="h-7 w-auto" />
+          </a>
+          <nav class="hidden md:flex items-center space-x-10">
+            <a href="#about" class="nav-link">ABOUT</a>
+            <a href="#methodology" class="nav-link">METHODOLOGY</a>
+            <a href="#fixes" class="nav-link">FIXES</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link">GITHUB</a>
+          </nav>
+          <button class="nav-menu-toggle md:hidden" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      <nav id="nav-mobile" class="nav-mobile md:hidden">
+        <a href="#about" class="nav-mobile-link">ABOUT</a>
+        <a href="#methodology" class="nav-mobile-link">METHODOLOGY</a>
+        <a href="#fixes" class="nav-mobile-link">FIXES</a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-mobile-link">GITHUB</a>
+      </nav>
+    </header>
+
+    <header class="hero" id="about">
+      <span class="lab-eyebrow">AEO READINESS CHECK</span>
+      <h1>Can AI find you?</h1>
+      <p>
+        Paste your URL. We audit what answer engines can actually read and hand
+        you the exact code to fix what's broken.
+      </p>
+      <div data-lab-share></div>
+    </header>
+
+    <section class="search" id="search">
+      <div class="search-row">
+        <input
+          id="input"
+          type="text"
+          placeholder="https://yourcompany.com"
+          autocomplete="off"
+          spellcheck="false"
+          autocapitalize="off"
+        />
+        <button class="btn" id="go"><span class="btn-spinner"></span><span id="go-label">Check my AEO →</span></button>
+      </div>
+      <div class="search-hint">
+        <span id="hint">Crawler access, structured data and agent-readiness — checked, not guessed.</span>
+        <span class="quota" id="quota"></span>
+      </div>
+    </section>
+
+    <!-- run stage -->
+    <section class="stage is-hidden" id="stage">
+      <div class="stepper" id="stepper"></div>
+      <div class="run-status" id="run-status">
+        <span class="spinner" id="spinner"></span>
+        <span class="status-text" id="status"></span>
+      </div>
+
+      <!-- Shown when the crawl succeeded but something about it needs flagging
+           (a JS-only shell, a redirect to a different host, a thin page). -->
+      <div class="anchor-warning is-hidden" id="audit-warning">
+        <div class="anchor-warning-body">
+          <b id="audit-warning-title">Heads up.</b>
+          <span id="audit-warning-msg"></span>
+        </div>
+      </div>
+
+      <!-- score card -->
+      <div class="card score-card is-hidden" id="score-card">
+        <div class="score-head">
+          <div class="score-id">
+            <h2 class="source-name" id="site-name"></h2>
+            <p class="source-sub" id="site-sub"></p>
+          </div>
+          <div class="score-big">
+            <div class="score-ring">
+              <svg viewBox="0 0 76 76">
+                <circle class="ring-bg" cx="38" cy="38" r="33" stroke-width="7" />
+                <circle class="ring-fg" id="ring-fg" cx="38" cy="38" r="33" stroke-width="7"
+                        stroke-dasharray="207.35" stroke-dashoffset="207.35" />
+              </svg>
+              <div class="score-num" id="score-num">–</div>
+            </div>
+            <span class="grade-band" id="grade-band"></span>
+          </div>
+        </div>
+
+        <p class="label">Where the points went</p>
+        <div class="pillars" id="pillars"></div>
+        <p class="not-measured is-hidden" id="not-measured"></p>
+
+        <div class="source-actions">
+          <div class="fb" id="fb"></div>
+          <button class="wrong-person is-hidden" type="button" id="rescan">Re-run this scan →</button>
+        </div>
+      </div>
+
+      <!-- the whole report as one file you can hand to an LLM -->
+      <div class="card plan-card is-hidden" id="plan-card">
+        <div class="plan-copy">
+          <p class="label">Don't do this by hand</p>
+          <h3 class="plan-title">Download the fix plan</h3>
+          <p class="plan-sub">
+            One Markdown file with every fix below — the evidence, the code, and
+            the instructions. Drop it into Claude Code, Cursor or ChatGPT and let
+            it make the changes.
+          </p>
+          <!-- Download failures surface here, next to the button that was
+               clicked — the page-level #notice is far below the fold. -->
+          <p class="plan-error is-hidden" id="plan-error"></p>
+        </div>
+        <a class="btn plan-btn" id="plan-dl" href="#" download>Download .md</a>
+      </div>
+
+      <!-- engine grid -->
+      <p class="section-label is-hidden" id="engines-label">What each engine says about you</p>
+      <div class="engines" id="engines"></div>
+      <p class="disclosure is-hidden" id="disclosure"></p>
+
+      <!-- the questions we asked -->
+      <p class="section-label is-hidden" id="queries-label"></p>
+      <div class="card queries-card is-hidden" id="queries-card">
+        <div class="chips" id="query-chips"></div>
+        <p class="queries-note" id="queries-note"></p>
+      </div>
+
+      <!-- fix list -->
+      <h2 class="results-title is-hidden" id="fixes-title"></h2>
+      <div class="fixes" id="fixes"></div>
+
+      <!-- who got cited instead -->
+      <div class="card also-cited is-hidden" id="also-cited">
+        <p class="label">Who got cited instead</p>
+        <p class="also-body" id="also-body"></p>
+        <div class="chips" id="also-chips"></div>
+      </div>
+    </section>
+
+    <!-- notices (errors / rate limit) -->
+    <div class="notice is-hidden" id="notice"></div>
+
+    <!-- methodology -->
+    <section class="method" id="methodology">
+      <h2>How it works</h2>
+      <p class="method-sub">Most of this score is deterministic. We check, we don't guess.</p>
+      <div class="method-steps">
+        <div class="method-step"><span class="method-num">01</span><div>
+          <h3>Crawl</h3>
+          <p>Fetch up to 10 pages the way an answer-engine crawler does — no JavaScript — plus <code>robots.txt</code>, your sitemap and the well-known paths agents look for.</p></div></div>
+        <div class="method-step"><span class="method-num">02</span><div>
+          <h3>Technical audit</h3>
+          <p>Bot allowlists, schema.org coverage, heading structure, render-without-JS, <code>llms.txt</code>, Content Signals. Pure checks — no model involved, so the same site scores the same twice.</p></div></div>
+        <div class="method-step"><span class="method-num">03</span><div>
+          <h3>Score</h3>
+          <p>Five pillars, 100 points. Anything we couldn't measure is excluded from the total and named, rather than quietly counted as zero.</p></div></div>
+        <div class="method-step"><span class="method-num">04</span><div>
+          <h3>Write the fixes</h3>
+          <p>Generate the real artifact for each gap — the JSON-LD, the <code>llms.txt</code>, the <code>robots.txt</code> diff — built only from content we actually read on your site. Anything we can't source comes back as an obvious placeholder instead of a guess.</p></div></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container mx-auto px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="footer-text">
+            &copy; 2026 AEO Readiness Check. All rights reserved.
+          </p>
+          <div class="flex items-center space-x-6 mt-4 md:mt-0">
+            <a href="#about" class="footer-link">About</a>
+            <a href="#methodology" class="footer-link">Methodology</a>
+            <a href="#fixes" class="footer-link">Fixes</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        if (window.__aeoHeaderBound) return;
+        window.__aeoHeaderBound = true;
+
+        function onScroll() {
+          var h = document.getElementById('header');
+          if (!h) return;
+          if (window.scrollY > 50) h.classList.add('scrolled');
+          else h.classList.remove('scrolled');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        var toggle = document.querySelector('.nav-menu-toggle');
+        var mobileNav = document.getElementById('nav-mobile');
+        if (toggle && mobileNav) {
+          toggle.addEventListener('click', function () {
+            var open = mobileNav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+          mobileNav.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+              mobileNav.classList.remove('open');
+              toggle.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+      })();
+    </script>
+
+    <script src="./js/lab-share.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

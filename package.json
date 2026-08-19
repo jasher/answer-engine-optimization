@@ -1,0 +1,17 @@
+{
+  "name": "aeo-readiness-check",
+  "version": "1.0.0",
+  "description": "AEO Readiness Check & Linkup.so integration",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/linkup.test.js"
+  },
+  "keywords": [
+    "aeo",
+    "answer-engine-optimization",
+    "linkup",
+    "seo",
+    "ai-readiness"
+  ],
+  "license": "MIT"
+}

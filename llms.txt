@@ -1,0 +1,16 @@
+# AEO Readiness Check
+
+> AEO Readiness Check is a web application that audits what AI answer engines
+> (ChatGPT, Perplexity, Gemini, Claude) can read from a website and provides actionable,
+> copy-pasteable code fixes (JSON-LD structured data, `llms.txt`, `robots.txt` diffs)
+> to optimize visibility in AI answer engines.
+
+## Overview
+- [Home](/): Audit any URL for AEO readiness
+- [Documentation](/docs/prd.md): Product architecture and technical specification
+- [GitHub Integration](/lib/linkup.js): Linkup search and competitor retrieval client
+
+## Core Capabilities
+- **Technical Audit**: Crawler access (robots.txt, HTTP status, sitemap), structured data (schema.org JSON-LD), agent surfaces (llms.txt, Content Signals)
+- **Live AI Visibility**: Measures citation share across major AI answer engines for real category queries
+- **Automated Fix Generation**: Pre-built JSON-LD schemas, robots.txt directives, and markdown fix plans
