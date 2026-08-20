@@ -3,75 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AEO Readiness Check · Can AI find your company?</title>
+    <title>Readiness Assessment · Answer Engine Optimization Audit</title>
     <meta
       name="description"
-      content="Paste your URL. Get an AEO readiness score, see what answer engines can actually read, and get the exact code to fix what's broken."
+      content="Run an audit to learn how AI models (ChatGPT, Gemini, Claude) read and index your content. We'll help you fill any gaps with production-ready code snippets that improve your visibility to AI and agents."
     />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="AEO Readiness Check · Can AI find your company?" />
-    <meta property="og:description" content="Paste your URL. Get an AEO readiness score, see what answer engines can actually read, and get the exact code to fix what's broken." />
+    <meta property="og:title" content="Readiness Assessment · Answer Engine Optimization Audit" />
+    <meta property="og:description" content="Run an audit to learn how AI models (ChatGPT, Gemini, Claude) read and index your content. We'll help you fill any gaps with production-ready code snippets that improve your visibility to AI and agents." />
     <meta property="og:image" content="./images/site-logo.png" />
-    <meta property="og:site_name" content="AEO Readiness Check" />
+    <meta property="og:site_name" content="Readiness Assessment" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="AEO Readiness Check · Can AI find your company?" />
-    <meta property="twitter:description" content="Paste your URL. Get an AEO readiness score, see what answer engines can actually read, and get the exact code to fix what's broken." />
+    <meta property="twitter:title" content="Readiness Assessment · Answer Engine Optimization Audit" />
+    <meta property="twitter:description" content="Run an audit to learn how AI models (ChatGPT, Gemini, Claude) read and index your content. We'll help you fill any gaps with production-ready code snippets that improve your visibility to AI and agents." />
     <meta property="twitter:image" content="./images/site-logo.png" />
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png" />
+    <link rel="manifest" href="./favicon_io/site.webmanifest" />
+    <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://db.onlinewebfonts.com/c/8f2a9d487bbbc60974cd132fc3a63862?family=Aeonik+Regular"
     />
-    <!-- Base layout and typography stylesheet -->
+    <!-- Base stylesheet -->
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/lab-share.css" />
-    <!-- Application styles -->
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <header id="header" class="fixed top-0 w-full bg-transparent z-50 transition-all duration-200">
-      <div class="container mx-auto px-8 py-8">
-        <div class="flex items-center justify-between">
-          <a href="/" class="logo-link flex items-center gap-2">
-            <img src="./images/site-logo.svg" alt="AEO" class="h-7 w-auto" />
-          </a>
-          <nav class="hidden md:flex items-center space-x-10">
-            <a href="#about" class="nav-link">ABOUT</a>
-            <a href="#methodology" class="nav-link">METHODOLOGY</a>
-            <a href="#fixes" class="nav-link">FIXES</a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link">GITHUB</a>
-          </nav>
-          <button class="nav-menu-toggle md:hidden" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+    <!-- Sticky Page-Wide Top Navigation -->
+    <header class="top-nav">
+      <div class="top-nav-container">
+        <a href="/" class="top-nav-brand">AEO READINESS ASSESSMENT</a>
+        <nav class="top-nav-links">
+          <a href="#how-it-works" class="nav-link">How it Works</a>
+          <a href="#search" class="nav-link nav-cta" id="nav-get-started">Get Started</a>
+        </nav>
       </div>
-      <nav id="nav-mobile" class="nav-mobile md:hidden">
-        <a href="#about" class="nav-mobile-link">ABOUT</a>
-        <a href="#methodology" class="nav-mobile-link">METHODOLOGY</a>
-        <a href="#fixes" class="nav-mobile-link">FIXES</a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-mobile-link">GITHUB</a>
-      </nav>
     </header>
 
-    <header class="hero" id="about">
-      <span class="lab-eyebrow">AEO READINESS CHECK</span>
-      <h1>Can AI find you?</h1>
-      <p>
-        Paste your URL. We audit what answer engines can actually read and hand
-        you the exact code to fix what's broken.
+    <!-- Hero Section -->
+    <header class="hero">
+      <span class="lab-eyebrow">ANSWER ENGINE OPTIMIZATION</span>
+      <!-- <h1>How does AI see <span class="hero-emoji">👀</span><br /><em>your</em> company?</h1> -->
+      <h1>How does AI<br /><span class="hero-emoji">👀</span> see <em>you</em>?</h1>
+      <p class="hero-subtitle">
+        Run an audit to learn how AI models (ChatGPT, Gemini, Claude) read and index
+        your content. <span class="hero-subtle">We'll help you fill any gaps with <span class="hero-highlight">production-ready code snippets</span> that improve your visibility to AI and agents.</span>
       </p>
-      <div data-lab-share></div>
     </header>
 
+    <!-- Search Section -->
     <section class="search" id="search">
       <div class="search-row">
         <input
@@ -82,15 +73,23 @@
           spellcheck="false"
           autocapitalize="off"
         />
-        <button class="btn" id="go"><span class="btn-spinner"></span><span id="go-label">Check my AEO →</span></button>
+        <button class="btn" id="go"><span class="btn-spinner"></span><span id="go-label">Run Assessment →</span></button>
       </div>
       <div class="search-hint">
-        <span id="hint">Crawler access, structured data and agent-readiness — checked, not guessed.</span>
+        <span id="hint">
+          <button type="button" class="linkup-key-trigger" id="linkup-key-trigger">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="7.5" cy="15.5" r="4.5"/>
+              <path d="m21 2-9.6 9.6M15.5 7.5l2.5 2.5M18.5 4.5l2.5 2.5"/>
+            </svg>
+            <span id="linkup-trigger-label">Add your LinkUp key for optimal competitor search</span>
+          </button>
+        </span>
         <span class="quota" id="quota"></span>
       </div>
     </section>
 
-    <!-- run stage -->
+    <!-- Run Stage -->
     <section class="stage is-hidden" id="stage">
       <div class="stepper" id="stepper"></div>
       <div class="run-status" id="run-status">
@@ -98,8 +97,7 @@
         <span class="status-text" id="status"></span>
       </div>
 
-      <!-- Shown when the crawl succeeded but something about it needs flagging
-           (a JS-only shell, a redirect to a different host, a thin page). -->
+      <!-- Audit Warning Notice -->
       <div class="anchor-warning is-hidden" id="audit-warning">
         <div class="anchor-warning-body">
           <b id="audit-warning-title">Heads up.</b>
@@ -107,7 +105,7 @@
         </div>
       </div>
 
-      <!-- score card -->
+      <!-- Score Card -->
       <div class="card score-card is-hidden" id="score-card">
         <div class="score-head">
           <div class="score-id">
@@ -133,44 +131,42 @@
 
         <div class="source-actions">
           <div class="fb" id="fb"></div>
-          <button class="wrong-person is-hidden" type="button" id="rescan">Re-run this scan →</button>
+          <button class="wrong-person is-hidden" type="button" id="rescan">Re-run assessment →</button>
         </div>
       </div>
 
-      <!-- the whole report as one file you can hand to an LLM -->
+      <!-- Fix Plan Download Card -->
       <div class="card plan-card is-hidden" id="plan-card">
         <div class="plan-copy">
-          <p class="label">Don't do this by hand</p>
+          <p class="label">Automated Remediation</p>
           <h3 class="plan-title">Download the fix plan</h3>
           <p class="plan-sub">
             One Markdown file with every fix below — the evidence, the code, and
-            the instructions. Drop it into Claude Code, Cursor or ChatGPT and let
-            it make the changes.
+            the instructions. Drop it into Claude Code, Cursor, or ChatGPT to implement
+            the fixes instantly.
           </p>
-          <!-- Download failures surface here, next to the button that was
-               clicked — the page-level #notice is far below the fold. -->
           <p class="plan-error is-hidden" id="plan-error"></p>
         </div>
         <a class="btn plan-btn" id="plan-dl" href="#" download>Download .md</a>
       </div>
 
-      <!-- engine grid -->
-      <p class="section-label is-hidden" id="engines-label">What each engine says about you</p>
+      <!-- Engine Grid -->
+      <p class="section-label is-hidden" id="engines-label">What each answer engine says about you</p>
       <div class="engines" id="engines"></div>
       <p class="disclosure is-hidden" id="disclosure"></p>
 
-      <!-- the questions we asked -->
+      <!-- Queries Asked -->
       <p class="section-label is-hidden" id="queries-label"></p>
       <div class="card queries-card is-hidden" id="queries-card">
         <div class="chips" id="query-chips"></div>
         <p class="queries-note" id="queries-note"></p>
       </div>
 
-      <!-- fix list -->
+      <!-- Fix List -->
       <h2 class="results-title is-hidden" id="fixes-title"></h2>
       <div class="fixes" id="fixes"></div>
 
-      <!-- who got cited instead -->
+      <!-- Competitor Citation Benchmark -->
       <div class="card also-cited is-hidden" id="also-cited">
         <p class="label">Who got cited instead</p>
         <p class="also-body" id="also-body"></p>
@@ -178,72 +174,282 @@
       </div>
     </section>
 
-    <!-- notices (errors / rate limit) -->
+    <!-- Notices (Errors / Rate Limit) -->
     <div class="notice is-hidden" id="notice"></div>
 
-    <!-- methodology -->
-    <section class="method" id="methodology">
-      <h2>How it works</h2>
-      <p class="method-sub">Most of this score is deterministic. We check, we don't guess.</p>
+    <!-- Methodology Section (2x2 Grid) -->
+    <section class="method" id="how-it-works">
+      <h2>How the Assessment Works</h2>
       <div class="method-steps">
-        <div class="method-step"><span class="method-num">01</span><div>
-          <h3>Crawl</h3>
-          <p>Fetch up to 10 pages the way an answer-engine crawler does — no JavaScript — plus <code>robots.txt</code>, your sitemap and the well-known paths agents look for.</p></div></div>
-        <div class="method-step"><span class="method-num">02</span><div>
-          <h3>Technical audit</h3>
-          <p>Bot allowlists, schema.org coverage, heading structure, render-without-JS, <code>llms.txt</code>, Content Signals. Pure checks — no model involved, so the same site scores the same twice.</p></div></div>
-        <div class="method-step"><span class="method-num">03</span><div>
-          <h3>Score</h3>
-          <p>Five pillars, 100 points. Anything we couldn't measure is excluded from the total and named, rather than quietly counted as zero.</p></div></div>
-        <div class="method-step"><span class="method-num">04</span><div>
-          <h3>Write the fixes</h3>
-          <p>Generate the real artifact for each gap — the JSON-LD, the <code>llms.txt</code>, the <code>robots.txt</code> diff — built only from content we actually read on your site. Anything we can't source comes back as an obvious placeholder instead of a guess.</p></div></div>
+        <div class="method-step" data-step="01">
+          <div class="method-step-header">
+            <span class="method-badge">DISCOVER</span>
+          </div>
+          <h3>Bot Emulation &amp; Discovery</h3>
+          <p>Inspects your web properties exactly like modern AI indexers - without relying on client JavaScript: analyzing <code>robots.txt</code> directives, sitemaps, and machine-readable agent routes.</p>
+        </div>
+
+        <div class="method-step" data-step="02">
+          <div class="method-step-header">
+            <span class="method-badge">AUDIT</span>
+          </div>
+          <h3>Structural &amp; Semantic Audit</h3>
+          <p>Validates AI crawler permissions, schema.org structured data, semantic heading organization, Content Signals, and <code>llms.txt</code> discovery files.</p>
+        </div>
+
+        <div class="method-step" data-step="03">
+          <div class="method-step-header">
+            <span class="method-badge">SCORE</span>
+          </div>
+          <h3>Readiness Scoring</h3>
+          <p>Computes an objective 100-point composite grade across five key dimensions, clearly isolating any unverified channels without skewing your score.</p>
+        </div>
+
+        <div class="method-step" data-step="04">
+          <div class="method-step-header">
+            <span class="method-badge">GENERATE</span>
+          </div>
+          <h3>Actionable Code Generation</h3>
+          <p>Builds tailored JSON-LD blocks, customized <code>llms.txt</code> templates, and <code>robots.txt</code> patch configurations based strictly on content extracted from your pages.</p>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container mx-auto px-8">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="footer-text">
-            &copy; 2026 AEO Readiness Check. All rights reserved.
-          </p>
-          <div class="flex items-center space-x-6 mt-4 md:mt-0">
-            <a href="#about" class="footer-link">About</a>
-            <a href="#methodology" class="footer-link">Methodology</a>
-            <a href="#fixes" class="footer-link">Fixes</a>
+    <!-- Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <span class="footer-logo-text">AEO READINESS ASSESSMENT</span>
           </div>
+          <p class="footer-desc">
+            An open source tool to test your website’s AI readability, schema markup, and crawler access.
+          </p>
+          <div class="footer-os-badge">
+            <span class="os-dot"></span>
+            <span>Open Source under MIT License</span>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="./llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a></li>
+            <li><a href="./llms-full.txt" target="_blank" rel="noopener noreferrer">llms-full.txt</a></li>
+            <li><a href="./robots.txt" target="_blank" rel="noopener noreferrer">robots.txt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Source &amp; Links</h4>
+          <ul class="footer-links">
+            <li>
+              <a href="https://github.com/jasher/answer-engine-optimization" target="_blank" rel="noopener noreferrer" class="footer-gh-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.55v-2.12c-3.2.7-3.87-1.36-3.87-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.26.74-1.55-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.75.81 1.2 1.84 1.2 3.1 0 4.44-2.7 5.41-5.27 5.7.42.36.79 1.07.79 2.16v3.21c0 .31.21.67.79.55A11.53 11.53 0 0 0 23.5 12.02C23.5 5.66 18.35.5 12 .5Z"/>
+                </svg>
+                <span>GitHub Repository</span>
+              </a>
+            </li>
+            <li><a href="https://github.com/jasher/answer-engine-optimization/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+            <li><a href="#search" class="footer-run-now">Run Now →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-container">
+          <p>Answer Engine Optimization (AEO) Readiness Assessment</p>
+          <a href="https://github.com/jasher/answer-engine-optimization" target="_blank" rel="noopener noreferrer" class="footer-bottom-gh">
+            github.com/jasher/answer-engine-optimization
+          </a>
         </div>
       </div>
     </footer>
 
+    <!-- Linkup API Key Modal -->
+    <div class="modal-backdrop is-hidden" id="linkup-modal" role="dialog" aria-modal="true" aria-labelledby="linkup-modal-title">
+      <div class="modal-card">
+        <button class="modal-close" id="linkup-modal-close" aria-label="Close modal">✕</button>
+        
+        <div class="modal-header">
+          <div class="modal-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="7.5" cy="15.5" r="4.5"/>
+              <path d="m21 2-9.6 9.6M15.5 7.5l2.5 2.5M18.5 4.5l2.5 2.5"/>
+            </svg>
+          </div>
+          <div>
+            <h3 id="linkup-modal-title">Linkup API Key</h3>
+            <p class="modal-subtitle">Enables the most accurate competitor discovery and real-time citation analysis.</p>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <label for="linkup-key-input" class="modal-label">Your Linkup API Key (Optional)</label>
+          <div class="modal-input-wrap">
+            <input
+              type="password"
+              id="linkup-key-input"
+              class="modal-input"
+              placeholder=""
+              autocomplete="off"
+              spellcheck="false"
+              value=""
+            />
+            <button type="button" class="toggle-password-btn" id="toggle-key-visibility" aria-label="Toggle key visibility">👁</button>
+          </div>
+
+          <div class="modal-privacy-notice">
+            <span class="privacy-text">Note: Your key is held in ephemeral browser memory. It is never cached, never saved to database, and never stored on our servers.</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <a href="https://app.linkup.so/sign-in" target="_blank" rel="noopener noreferrer" class="modal-get-key-link">
+            Get key at Linkup.so ↗
+          </a>
+          <div class="modal-actions">
+            <button type="button" class="modal-btn modal-btn-secondary is-hidden" id="linkup-clear-btn">Clear Key</button>
+            <button type="button" class="modal-btn modal-btn-cancel" id="linkup-cancel-btn">Cancel</button>
+            <button type="button" class="modal-btn modal-btn-primary" id="linkup-save-btn">Save for Session</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
-      (function () {
-        if (window.__aeoHeaderBound) return;
-        window.__aeoHeaderBound = true;
-
-        function onScroll() {
-          var h = document.getElementById('header');
-          if (!h) return;
-          if (window.scrollY > 50) h.classList.add('scrolled');
-          else h.classList.remove('scrolled');
+      // Smooth scroll + focus for Get Started CTA
+      document.getElementById('nav-get-started')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        const input = document.getElementById('input');
+        if (input) {
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => input.focus(), 350);
         }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+      });
 
-        var toggle = document.querySelector('.nav-menu-toggle');
-        var mobileNav = document.getElementById('nav-mobile');
-        if (toggle && mobileNav) {
-          toggle.addEventListener('click', function () {
-            var open = mobileNav.classList.toggle('open');
-            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-          });
-          mobileNav.addEventListener('click', function (e) {
-            if (e.target.tagName === 'A') {
-              mobileNav.classList.remove('open');
-              toggle.setAttribute('aria-expanded', 'false');
-            }
-          });
+      // Linkup Key Modal Management
+      (function() {
+        const modal = document.getElementById('linkup-modal');
+        const trigger = document.getElementById('linkup-key-trigger');
+        const triggerLabel = document.getElementById('linkup-trigger-label');
+        const closeBtn = document.getElementById('linkup-modal-close');
+        const cancelBtn = document.getElementById('linkup-cancel-btn');
+        const saveBtn = document.getElementById('linkup-save-btn');
+        const clearBtn = document.getElementById('linkup-clear-btn');
+        const keyInput = document.getElementById('linkup-key-input');
+        const toggleVisibilityBtn = document.getElementById('toggle-key-visibility');
+
+        function updateTriggerState() {
+          const key = sessionStorage.getItem('AEO_LINKUP_KEY');
+          if (key && key.trim()) {
+            trigger?.classList.add('is-active');
+            if (triggerLabel) triggerLabel.textContent = '✓ LinkUp key active (Click to edit)';
+            clearBtn?.classList.remove('is-hidden');
+            if (keyInput) keyInput.value = key;
+          } else {
+            trigger?.classList.remove('is-active');
+            if (triggerLabel) triggerLabel.textContent = 'Add your LinkUp key for optimal competitor search';
+            clearBtn?.classList.add('is-hidden');
+            if (keyInput) keyInput.value = '';
+          }
         }
+
+        function openModal() {
+          modal?.classList.remove('is-hidden');
+          const key = sessionStorage.getItem('AEO_LINKUP_KEY') || '';
+          if (keyInput) {
+            keyInput.value = key;
+            setTimeout(() => {
+              keyInput.focus();
+              if (key) keyInput.select();
+            }, 60);
+          }
+        }
+
+        function closeModal() {
+          modal?.classList.add('is-hidden');
+        }
+
+        trigger?.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal();
+        });
+
+        keyInput?.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            saveBtn?.click();
+          }
+        });
+
+        closeBtn?.addEventListener('click', closeModal);
+        cancelBtn?.addEventListener('click', closeModal);
+
+        modal?.addEventListener('click', function(e) {
+          if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && !modal?.classList.contains('is-hidden')) {
+            closeModal();
+          }
+        });
+
+        toggleVisibilityBtn?.addEventListener('click', function() {
+          if (!keyInput) return;
+          const isPassword = keyInput.type === 'password';
+          keyInput.type = isPassword ? 'text' : 'password';
+          toggleVisibilityBtn.textContent = isPassword ? '🔒' : '👁';
+        });
+
+        saveBtn?.addEventListener('click', function() {
+          const val = keyInput?.value?.trim() || '';
+          if (val) {
+            sessionStorage.setItem('AEO_LINKUP_KEY', val);
+          } else {
+            sessionStorage.removeItem('AEO_LINKUP_KEY');
+          }
+          updateTriggerState();
+          closeModal();
+        });
+
+        clearBtn?.addEventListener('click', function() {
+          sessionStorage.removeItem('AEO_LINKUP_KEY');
+          updateTriggerState();
+          closeModal();
+        });
+
+        updateTriggerState();
+      })();
+
+      // Search Submission -> Redirect to Dedicated Report Page
+      (function() {
+        const input = document.getElementById('input');
+        const goBtn = document.getElementById('go');
+
+        function startAudit() {
+          let val = input?.value?.trim() || '';
+          if (!val) {
+            input?.focus();
+            return;
+          }
+          val = val.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+          window.location.href = `report.html?d=${encodeURIComponent(val)}`;
+        }
+
+        goBtn?.addEventListener('click', function(e) {
+          e.preventDefault();
+          startAudit();
+        });
+
+        input?.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            startAudit();
+          }
+        });
       })();
     </script>
 

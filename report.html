@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AEO Audit Report — Answer Engine Optimization</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="report.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body class="report-body">
+  <!-- Sticky Top Navigation -->
+  <header class="top-nav">
+    <div class="top-nav-container">
+      <a href="/" class="top-nav-brand">AEO READINESS ASSESSMENT</a>
+      <div class="report-nav-meta" id="report-nav-meta">
+        <span class="report-domain-badge" id="nav-domain-badge">Analyzing...</span>
+        <span class="report-cache-tag is-hidden" id="nav-cache-tag">⚡ CACHED</span>
+      </div>
+      <div class="top-nav-links">
+        <button type="button" class="nav-link report-rerun-btn" id="rerun-btn">↻ Re-run Scan</button>
+        <a href="/" class="nav-link nav-cta">New Domain →</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="report-container">
+    <!-- Live Loading / Stepper Banner -->
+    <div class="stepper-card is-hidden" id="stepper-card">
+      <div class="stepper-spinner"></div>
+      <div class="stepper-text">
+        <h3 id="stepper-title">Auditing Web Properties...</h3>
+        <p id="stepper-subtitle">Simulating AI search crawlers without client JavaScript</p>
+      </div>
+    </div>
+
+    <!-- Error Banner -->
+    <div class="report-error is-hidden" id="report-error">
+      <span class="error-icon">⚠️</span>
+      <span id="error-message">Failed to load report</span>
+    </div>
+
+    <!-- Main Results Wrapper (hidden until loaded) -->
+    <div class="report-results is-hidden" id="report-results">
+      
+      <!-- 1. Top Score Card & Domain Header -->
+      <section class="score-card">
+        <div class="score-header">
+          <div>
+            <h1 class="target-domain" id="target-domain">domain.com</h1>
+            <p class="target-meta" id="target-meta">10 pages crawled · robots.txt found · sitemap found</p>
+          </div>
+          <div class="radial-score-wrap">
+            <div class="radial-ring" id="radial-ring">
+              <span class="score-num" id="score-num">0</span>
+            </div>
+            <span class="score-band-badge" id="score-band-badge">GRADE B</span>
+          </div>
+        </div>
+
+        <!-- 5 Horizontal Pillar Bars -->
+        <div class="pillars-list" id="pillars-list">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+      <!-- 2. One-Click Fix Plan Download Card -->
+      <section class="download-plan-card">
+        <div class="download-plan-info">
+          <h3>Download the Fix Plan</h3>
+          <p>One-click markdown file with all code fixes and instructions tailored for Claude Code, Cursor, or Codex.</p>
+        </div>
+        <button type="button" class="download-plan-btn" id="download-plan-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Download .md
+        </button>
+      </section>
+
+      <!-- 3. 4-Engine AI Radar Breakdown -->
+      <section class="engines-section">
+        <div class="section-title-wrap">
+          <h2>Live AI Visibility Benchmark</h2>
+          <p class="section-subtitle">Real-time retrieval and citation tests across frontier answer models.</p>
+        </div>
+        <div class="engines-grid" id="engines-grid">
+          <!-- 4 Engine Cards rendered here -->
+        </div>
+      </section>
+
+      <!-- 4. Buyer-Intent Query Chips -->
+      <section class="queries-section">
+        <h3>Tested Buyer-Intent Queries</h3>
+        <div class="queries-list" id="queries-list">
+          <!-- Chips rendered here -->
+        </div>
+      </section>
+
+      <!-- 5. 10 Things to Fix (Ranked Remediation Cards) -->
+      <section class="fixes-section">
+        <div class="fixes-header">
+          <h2>10 things to fix, most damaging first</h2>
+          <p class="section-subtitle">Deterministic code remedies generated from content extracted on your site.</p>
+        </div>
+        <div class="fixes-list" id="fixes-list">
+          <!-- Code Fix Cards rendered here -->
+        </div>
+      </section>
+
+      <!-- 6. Who Else Got Cited (Competitor Cohort) -->
+      <section class="competitors-section" id="competitors-section">
+        <h3>Who else got cited in your queries</h3>
+        <p class="section-subtitle">Competing brands and domains recommended by AI answer engines.</p>
+        <div class="competitor-chips" id="competitor-chips">
+          <!-- Competitor chips -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <div class="footer-brand">
+          <span class="footer-logo-text">AEO READINESS CHECK</span>
+        </div>
+        <p class="footer-desc">An open source tool to test your website’s AI readability, schema markup, and crawler access.</p>
+        <div class="footer-os-badge">
+          <span class="os-dot"></span>
+          <span>Open Source under MIT License</span>
+        </div>
+      </div>
+      <div class="footer-links-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/">← Back to Audit</a></li>
+          <li><a href="/#how-it-works">Assessment Framework</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4>Machine Readable</h4>
+        <ul class="footer-links">
+          <li><a href="/llms.txt">/llms.txt</a></li>
+          <li><a href="/llms-full.txt">/llms-full.txt</a></li>
+          <li><a href="/robots.txt">/robots.txt</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="report.js"></script>
+</body>
+</html>

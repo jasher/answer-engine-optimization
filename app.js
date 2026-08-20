@@ -769,3 +769,29 @@ if (preset) {
   $("input").value = preset;
   run(preset);
 }
+
+/* ── scroll-triggered staggered animation for methodology section ────── */
+(function initMethodAnimation() {
+  const methodSection = document.querySelector("#how-it-works, .method, #methodology");
+  if (!methodSection) return;
+
+  if ("IntersectionObserver" in window) {
+    methodSection.classList.add("has-anim");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              methodSection.classList.add("is-visible");
+            }, 50);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    observer.observe(methodSection);
+  }
+})();

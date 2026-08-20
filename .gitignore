@@ -49,6 +49,7 @@ Thumbs.db
 *.swo
 *~
 
-# 7. System logs & temporary test artifacts
+# 7. System logs, archives & temporary test artifacts
 *.log
 .system_generated/
+archive/
