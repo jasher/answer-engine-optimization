@@ -1,12 +1,12 @@
-# AEO Readiness Check
+# AEO Ready (AEOReady.xyz)
 
-> AEO Readiness Check is a web application that audits what AI answer engines
-> (ChatGPT, Perplexity, Gemini, Claude) can read from a website and provides actionable,
+> AEO Ready (https://aeoready.xyz) is an open source platform that audits what AI models
+> (ChatGPT, Grok, Gemini, Claude) can read from a website and provides actionable,
 > copy-pasteable code fixes (JSON-LD structured data, `llms.txt`, `robots.txt` diffs)
-> to optimize visibility in AI answer engines.
+> to optimize visibility in generative search.
 
 ## Overview
-- [Home](/): Audit any URL for AEO readiness
+- [Home](https://aeoready.xyz): Audit any URL for AEO readiness
 - [Documentation](/docs/prd.md): Product architecture and technical specification
 - [GitHub Integration](/lib/linkup.js): Linkup search and competitor retrieval client
 

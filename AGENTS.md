@@ -1,10 +1,10 @@
-# AGENTS.md — AEO Readiness Check
+# AGENTS.md — AEO Ready (AEOReady.xyz)
 
 You are an AI agent reading this site. This page explains what machine-readable surfaces exist and how this tool audits answer engine optimization (AEO).
 
-## What is AEO Readiness Check?
+## What is AEO Ready?
 
-A web application that audits what AI answer engines (ChatGPT, Perplexity, Gemini, Claude) can read from a website and provides actionable code fixes (JSON-LD structured data, `llms.txt`, `robots.txt` diffs, heading structures) to improve answer engine optimization.
+An open source web application at https://aeoready.xyz that audits what AI models (ChatGPT, Grok, Gemini, Claude) can read from a website and provides actionable code fixes (JSON-LD structured data, `llms.txt`, `robots.txt` diffs, heading structures) to improve answer engine optimization.
 
 ## Key Features
 

@@ -3,23 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Readiness Assessment · Answer Engine Optimization Audit</title>
+    <title>AEO Ready · How does AI see you?</title>
     <meta
       name="description"
-      content="Run an audit to learn how AI models (ChatGPT, Gemini, Claude) read and index your content. Then follow the custom step-by-step recommendations to improve your visibility."
+      content="AEO Ready (AEOReady.xyz) audits how leading AI models (ChatGPT, Grok, Gemini, Claude) interpret your site. Get your AEO Readiness score and copy-pasteable code fixes."
     />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Readiness Assessment · Answer Engine Optimization Audit" />
-    <meta property="og:description" content="Run an audit to learn how AI models (ChatGPT, Gemini, Claude) read and index your content. Then follow the custom step-by-step recommendations to improve your visibility." />
+    <meta property="og:title" content="AEO Ready · Answer Engine Optimization Audit" />
+    <meta property="og:description" content="AEO Ready (AEOReady.xyz) audits how leading AI models (ChatGPT, Grok, Gemini, Claude) interpret your site. Get your AEO Readiness score and copy-pasteable code fixes." />
     <meta property="og:image" content="./images/site-logo.png" />
-    <meta property="og:site_name" content="Readiness Assessment" />
+    <meta property="og:site_name" content="AEO Ready" />
+    <meta property="og:url" content="https://aeoready.xyz" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Readiness Assessment · Answer Engine Optimization Audit" />
-    <meta property="twitter:description" content="Run an audit to learn how AI models (ChatGPT, Gemini, Claude) read and index your content. Then follow the custom step-by-step recommendations to improve your visibility." />
+    <meta property="twitter:title" content="AEO Ready · Answer Engine Optimization Audit" />
+    <meta property="twitter:description" content="AEO Ready (AEOReady.xyz) audits how leading AI models (ChatGPT, Grok, Gemini, Claude) interpret your site. Get your AEO Readiness score and copy-pasteable code fixes." />
     <meta property="twitter:image" content="./images/site-logo.png" />
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
@@ -30,7 +31,7 @@
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Rajdhani:wght@600;700&family=Saira:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
     <link
       rel="stylesheet"
@@ -46,7 +47,37 @@
     <!-- Sticky Page-Wide Top Navigation -->
     <header class="top-nav">
       <div class="top-nav-container">
-        <a href="/" class="top-nav-brand">AEO READINESS ASSESSMENT</a>
+        <!-- Logo Font Comparison (Upper Left) -->
+        <div class="logo-comparison-container">
+          <!-- Option 1: Saira Bold -->
+          <a href="/" class="logo-preview-card font-saira" title="Option 1: Saira Bold">
+            <div class="logo-mark">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" stroke="#38bdf8"/>
+                <path d="M12 3a9 9 0 0 1 9 9" stroke="#818cf8"/>
+                <circle cx="12" cy="12" r="3.2" fill="#38bdf8"/>
+              </svg>
+            </div>
+            <span class="logo-text">AEO Ready</span>
+            <span class="font-tag">Saira</span>
+          </a>
+
+          <div class="logo-divider"></div>
+
+          <!-- Option 2: Rajdhani Bold -->
+          <a href="/" class="logo-preview-card font-rajdhani" title="Option 2: Rajdhani Bold">
+            <div class="logo-mark">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" stroke="#818cf8"/>
+                <path d="M12 3a9 9 0 0 1 9 9" stroke="#c084fc"/>
+                <circle cx="12" cy="12" r="3.2" fill="#818cf8"/>
+              </svg>
+            </div>
+            <span class="logo-text">AEO Ready</span>
+            <span class="font-tag">Rajdhani</span>
+          </a>
+        </div>
+
         <nav class="top-nav-links">
           <a href="#how-it-works" class="nav-link">How it Works</a>
           <a href="#search" class="nav-link nav-cta" id="nav-get-started">Get Started</a>
@@ -60,8 +91,8 @@
       <!-- <h1>How does AI see <span class="hero-emoji">👀</span><br /><em>your</em> company?</h1> -->
       <h1>How does AI<br /><span class="hero-emoji">👀</span> see <em>you</em>?</h1>
       <p class="hero-subtitle">
-        <span class="hero-highlight">Run an audit</span> to learn how AI models (ChatGPT, Gemini, Claude) read and index
-        your content. Then follow the <span class="hero-highlight">custom step-by-step recommendations</span> to improve your visibility.
+        <span class="hero-highlight">Run an audit</span>&nbsp; to learn how AI models (e.g., ChatGPT, Gemini, Claude*) read and index
+        your content. Then follow the custom &nbsp;<span class="hero-highlight">step-by-step recommendations</span> to improve your visibility.
       </p>
     </header>
 
@@ -223,11 +254,12 @@
       <div class="footer-container">
         <div class="footer-brand-col">
           <div class="footer-brand">
-            <span class="footer-logo-text">AEO READINESS ASSESSMENT</span>
+            <span class="footer-logo-text">AEO READY</span>
           </div>
           <p class="footer-desc">
             An open source tool to test your website’s AI readability, schema markup, and crawler access.
           </p>
+          <p class="footer-note" style="margin-bottom: 24px; font-size: 0.85em; opacity: 0.8;">* frontier models not included in free assessment</p>
           <div class="footer-os-badge">
             <span class="os-dot"></span>
             <span>Open Source under MIT License</span>

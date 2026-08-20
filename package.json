@@ -1,7 +1,7 @@
 {
-  "name": "aeo-readiness-check",
+  "name": "aeo-ready",
   "version": "1.0.0",
-  "description": "AEO Readiness Check & Linkup.so integration",
+  "description": "AEO Ready (AEOReady.xyz) — Answer Engine Optimization Audit & AI Readability Suite",
   "type": "module",
   "scripts": {
     "test": "node tests/linkup.test.js"
@@ -13,5 +13,8 @@
     "seo",
     "ai-readiness"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "convex": "^1.44.0"
+  }
 }
