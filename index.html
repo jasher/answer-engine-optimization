@@ -32,9 +32,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-    <!-- Stylesheets -->
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./css/lab-share.css" />
   </head>
   <body>
     <!-- Sticky Page-Wide Top Navigation -->
@@ -55,43 +54,46 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <header class="hero">
-      <span class="lab-eyebrow">ANSWER ENGINE OPTIMIZATION</span>
-      <!-- <h1>How does AI see <span class="hero-emoji">👀</span><br /><em>your</em> company?</h1> -->
-      <h1>How does AI<br /><span class="hero-emoji">👀</span> see <em>you</em>?</h1>
-      <p class="hero-subtitle">
-        <span class="hero-highlight">Run an audit</span>&nbsp; to learn how AI models (e.g., ChatGPT, Gemini, Claude*) read and index
-        your content. Then follow the custom &nbsp;<span class="hero-highlight">step-by-step recommendations</span> to improve your visibility.
-      </p>
-    </header>
+    <!-- Hero Viewport Container -->
+    <div class="hero-wrapper hero-viewport">
+      <!-- Hero Section -->
+      <header class="hero">
+        <span class="lab-eyebrow">ANSWER ENGINE OPTIMIZATION</span>
+        <!-- <h1>How does AI see <span class="hero-emoji">👀</span><br /><em>your</em> company?</h1> -->
+        <h1>How does AI<br /><span class="hero-emoji">👀</span> see <em>you</em>?</h1>
+        <p class="hero-subtitle">
+          <span class="hero-highlight">Run an audit</span>&nbsp; to learn how AI models (e.g., ChatGPT, Gemini, Claude*) read and index
+          your content. Then follow the custom &nbsp;<span class="hero-highlight">step-by-step recommendations</span> to improve your visibility.
+        </p>
+      </header>
 
-    <!-- Search Section -->
-    <section class="search" id="search">
-      <div class="search-row">
-        <input
-          id="input"
-          type="text"
-          placeholder="https://yourcompany.com"
-          autocomplete="off"
-          spellcheck="false"
-          autocapitalize="off"
-        />
-        <button class="btn" id="go"><span class="btn-spinner"></span><span id="go-label">Run Assessment →</span></button>
-      </div>
-      <div class="search-hint">
-        <span id="hint">
-          <button type="button" class="linkup-key-trigger" id="linkup-key-trigger">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="7.5" cy="15.5" r="4.5"/>
-              <path d="m21 2-9.6 9.6M15.5 7.5l2.5 2.5M18.5 4.5l2.5 2.5"/>
-            </svg>
-            <span id="linkup-trigger-label">Add your LinkUp key for optimal competitor search</span>
-          </button>
-        </span>
-        <span class="quota" id="quota"></span>
-      </div>
-    </section>
+      <!-- Search Section -->
+      <section class="search" id="search">
+        <div class="search-row">
+          <input
+            id="input"
+            type="text"
+            placeholder="https://yourcompany.com"
+            autocomplete="off"
+            spellcheck="false"
+            autocapitalize="off"
+          />
+          <button class="btn" id="go"><span class="btn-spinner"></span><span id="go-label">Run Assessment →</span></button>
+        </div>
+        <div class="search-hint">
+          <span id="hint">
+            <button type="button" class="linkup-key-trigger" id="linkup-key-trigger">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="7.5" cy="15.5" r="4.5"/>
+                <path d="m21 2-9.6 9.6M15.5 7.5l2.5 2.5M18.5 4.5l2.5 2.5"/>
+              </svg>
+              <span id="linkup-trigger-label">Add your LinkUp key for optimal competitor search</span>
+            </button>
+          </span>
+          <span class="quota" id="quota"></span>
+        </div>
+      </section>
+    </div>
 
     <!-- Run Stage -->
     <section class="stage is-hidden" id="stage">

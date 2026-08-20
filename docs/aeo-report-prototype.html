@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>linkup.so · AEO Readiness Report</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================================================
+   AEO Ready — Design Tokens (aligned with master style.css)
+   ============================================================================= */
+:root {
+  --bg-base:             #060911;
+  --bg-surface:          #0d131f;
+  --bg-card:             rgba(15, 23, 42, 0.85);
+
+  --text-main:           #f8fafc;
+  --text-subtle:         #cbd5e1;
+  --text-muted:          #94a3b8;
+  --text-faint:          #64748b;
+
+  --cyan:                #38bdf8;
+  --cyan-soft:           rgba(56, 189, 248, 0.12);
+  --cyan-glow:           rgba(56, 189, 248, 0.35);
+  --indigo:              #818cf8;
+  --purple:              #c084fc;
+  --emerald:             #10b981;
+  --amber:               #f59e0b;
+  --rose:                #f87171;
+
+  --card-line:           rgba(255, 255, 255, 0.08);
+  --card-line-highlight: rgba(56, 189, 248, 0.25);
+
+  --font-sans:   'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100vw; min-height: 100vh; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.2), rgba(99, 102, 241, 0.12), transparent 70%),
+    linear-gradient(180deg, #060911 0%, #030509 100%);
+  background-attachment: fixed;
+  color: var(--text-subtle);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--cyan); text-decoration: none; transition: color 0.15s ease; }
+a:hover { color: var(--text-main); }
+
+/* ── Top Nav ─────────────────────────────────────────────────────────── */
+.top-nav {
+  position: sticky; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(7, 10, 18, 0.82);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--card-line);
+}
+.top-nav-container {
+  max-width: 1200px; margin: 0 auto; padding: 1.1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.top-nav-brand-wrapper { display: flex; flex-direction: column; align-items: flex-start; gap: 0.18rem; }
+.top-nav-brand { display: inline-flex; align-items: center; gap: 0.6rem; }
+.brand-logo-mark {
+  width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0;
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-weight: 700; font-size: 0.75rem; color: #070d1a;
+}
+.brand-title { font-family: 'Space Grotesk', var(--font-sans); font-size: 1.15rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.01em; }
+.brand-subtitle { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
+.top-nav-links { display: flex; align-items: center; gap: 1.5rem; }
+.nav-link { color: var(--text-subtle); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.15s ease; }
+.nav-link:hover { color: var(--cyan); }
+.nav-link.nav-cta {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem;
+  background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); color: var(--cyan);
+  transition: all 0.15s ease;
+}
+.nav-link.nav-cta:hover { background: var(--cyan); color: #030712; border-color: var(--cyan); box-shadow: 0 0 16px var(--cyan-glow); }
+
+/* ── Page Header (Report Scoped) ─────────────────────────────────────── */
+.page-head { max-width: 980px; margin: 0 auto; padding: 2.5rem 2rem 0; }
+.lab-eyebrow {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  background: linear-gradient(90deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 0.6rem;
+}
+.page-head h1 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15;
+  background: linear-gradient(180deg, #ffffff 15%, #cbd5e1 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin: 0 0 0.6rem;
+}
+.page-head p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; max-width: 640px; margin: 0; }
+.hero-highlight { color: var(--text-subtle); font-weight: 500; }
+
+/* ── Stage ───────────────────────────────────────────────────────────── */
+.stage { max-width: 980px; margin: 2.25rem auto 0; padding: 0 2rem; }
+
+/* ── Cards ───────────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card); border: 1px solid var(--card-line);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-radius: 0.85rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7);
+  color: var(--text-subtle); padding: 1.75rem;
+}
+
+/* ── Score Card ──────────────────────────────────────────────────────── */
+.score-card { margin-bottom: 1.75rem; }
+.score-head { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+.score-id { min-width: 0; flex: 1 1 14rem; }
+.source-name { font-size: 1.4rem; font-weight: 600; color: var(--text-main); margin: 0; }
+.source-sub { color: var(--text-muted); font-size: 0.9rem; margin: 0.15rem 0 0; }
+
+.score-big { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+.score-ring { position: relative; width: 96px; height: 96px; }
+.score-ring svg { width: 96px; height: 96px; transform: rotate(-90deg); }
+.score-ring .ring-bg { fill: none; stroke: rgba(255,255,255,0.1); }
+.score-ring .ring-fg { fill: none; stroke: var(--amber); stroke-linecap: round; transition: stroke-dashoffset 1s cubic-bezier(0.22,1,0.36,1); }
+.score-num {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 1.9rem; font-weight: 600; color: var(--text-main); letter-spacing: -0.03em;
+}
+.grade-band { font-size: 0.62rem; letter-spacing: 0.14em; font-weight: 700; border-radius: 999px; padding: 0.22rem 0.7rem; }
+.grade-c-bg { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+
+.label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin: 1.25rem 0 0.6rem; }
+
+.pillars { display: flex; flex-direction: column; gap: 0.7rem; }
+.pillar .axis-top { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+.pillar .of { color: var(--text-faint); font-size: 0.75rem; }
+.pillar .axis-bar { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+.pillar .axis-fill { height: 100%; background: linear-gradient(90deg, #38bdf8 0%, #818cf8 100%); border-radius: 3px; transition: width 0.7s ease; }
+.pillar .axis-fill.low { background: var(--rose); }
+
+.source-actions { display: flex; align-items: center; justify-content: flex-end; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.wrong-person { background: none; border: none; padding: 0; cursor: pointer; font: inherit; font-size: 0.78rem; font-weight: 500; color: var(--cyan); }
+.wrong-person:hover { color: #7dd3fc; text-decoration: underline; }
+
+/* ── Plan Card ───────────────────────────────────────────────────────── */
+.plan-card {
+  margin-bottom: 1.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0.9) 100%);
+  border: 1px solid rgba(56,189,248,0.3);
+}
+.plan-copy { flex: 1 1 20rem; min-width: 0; }
+.plan-title { margin: 0 0 0.35rem; font-size: 1.25rem; font-weight: 600; color: var(--text-main); }
+.plan-sub { margin: 0; font-size: 0.87rem; line-height: 1.55; color: var(--text-muted); max-width: 48ch; }
+.plan-btn {
+  flex: 0 0 auto; background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); color: #070d1a; font-weight: 700;
+  padding: 0.75rem 1.4rem; font-size: 0.92rem; border-radius: 0.6rem; display: inline-flex; align-items: center; gap: 0.5rem;
+  cursor: pointer; border: none; box-shadow: 0 4px 14px var(--cyan-glow); transition: all 0.15s ease;
+}
+.plan-btn:hover { background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%); color: var(--text-main); box-shadow: 0 6px 20px rgba(56,189,248,0.45); transform: translateY(-1px); }
+
+/* ── Engines ─────────────────────────────────────────────────────────── */
+.section-label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin: 0 0 0.85rem; }
+.engines { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 0.85rem; }
+.engine { background: var(--bg-card); border-radius: 0.75rem; border: 1px solid var(--card-line); box-shadow: 0 10px 25px rgba(0,0,0,0.4); padding: 1.05rem 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.engine-name { font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
+.engine-band { align-self: flex-start; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; border-radius: 0.35rem; padding: 0.1rem 0.45rem; margin-bottom: 0.15rem; }
+.band-c { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.band-d { background: rgba(248,113,113,0.15); color: #f87171; }
+.engine-stat { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.78rem; color: var(--text-muted); }
+.engine-stat b { color: var(--text-main); font-weight: 600; }
+.engine-out { opacity: 0.6; }
+.band-out { background: rgba(255,255,255,0.05); color: var(--text-faint); border: 1px dashed rgba(255,255,255,0.15); }
+.engine-stat.out { color: var(--text-faint); font-style: italic; }
+.disclosure { margin: 0.9rem 0.15rem 0; font-size: 0.78rem; line-height: 1.55; color: var(--text-faint); }
+
+/* ── Query Chips ─────────────────────────────────────────────────────── */
+.chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 0.3rem 0.75rem; font-size: 0.8rem; line-height: 1.4; color: var(--text-subtle); }
+.chip i { font-style: normal; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; margin-left: 0.4rem; }
+.chip.win { border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.12); }
+.chip.win i { color: #34d399; }
+.chip.partial { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.12); }
+.chip.partial i { color: #fbbf24; }
+.chip.lose { border-color: rgba(248,113,113,0.4); background: rgba(248,113,113,0.12); }
+.chip.lose i { color: #f87171; }
+.queries-note { margin: 0.9rem 0 0; padding-top: 0.75rem; border-top: 1px solid var(--card-line); font-size: 0.78rem; color: var(--text-muted); }
+.queries-note em { color: var(--text-subtle); font-style: normal; font-weight: 600; }
+
+/* ── Code Fix Remediation Cards ───────────────────────────────────────── */
+.results-title { text-align: center; color: var(--text-main); font-weight: 600; font-size: 1.75rem; margin: 0.5rem 0 1.75rem; }
+.fixes { display: flex; flex-direction: column; gap: 1.25rem; }
+.fix { border: 1px solid var(--card-line); border-left-width: 4px; background: rgba(15,23,42,0.9); }
+.sev-high { border-left-color: #38bdf8; }
+.sev-medium { border-left-color: #a855f7; }
+.sev-ahead { border-left-color: #10b981; }
+.fix-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+.fix-badge { font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 700; border-radius: 999px; padding: 0.22rem 0.65rem; }
+.sev-high .fix-badge { background: rgba(56,189,248,0.12); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); }
+.sev-medium .fix-badge { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+.sev-ahead .fix-badge { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.fix-pts { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); margin-left: 0.5rem; }
+.fix-where { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); }
+.fix-title { font-size: 1.08rem; font-weight: 600; color: var(--text-main); margin: 0 0 0.5rem; line-height: 1.35; }
+.fix-why { font-size: 0.89rem; color: var(--text-subtle); margin: 0 0 1rem; }
+.fix-why code { font-family: var(--font-mono); font-size: 0.83em; background: #070a12; border: 1px solid var(--card-line); border-radius: 0.28rem; padding: 0.05rem 0.3rem; color: #60a5fa; }
+.fix-where-to { font-size: 0.8rem; color: var(--text-muted); margin: 0.85rem 0 0; padding-top: 0.75rem; border-top: 1px solid var(--card-line); }
+.fix-where-to b { color: #38bdf8; }
+.fix-where-to.warn { color: #fbbf24; }
+.fix-where-to.warn b { color: #f59e0b; }
+
+/* Code Artifact Syntax Formatting */
+.artifact { border: 1px solid var(--card-line); border-radius: 0.6rem; overflow: hidden; background: #070a12; }
+.artifact-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.5rem 0.5rem 0.5rem 0.85rem; background: #0f172a; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.artifact-name { font-family: var(--font-mono); font-size: 0.72rem; color: #94a3b8; }
+.copy-btn { flex-shrink: 0; cursor: pointer; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; color: var(--text-subtle); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 0.4rem; padding: 0.28rem 0.7rem; transition: all 0.15s ease; }
+.copy-btn:hover { background: rgba(255,255,255,0.18); color: var(--cyan); border-color: var(--cyan); }
+.copy-btn.copied { background: rgba(16,185,129,0.2); color: #34d399; border-color: rgba(16,185,129,0.4); }
+.artifact pre { margin: 0; padding: 0.9rem 1rem; overflow-x: auto; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; color: var(--text-subtle); background: #070a12; }
+.artifact code { font-family: inherit; white-space: pre; }
+.artifact .k { color: #818cf8; } 
+.artifact .s { color: #34d399; } 
+.artifact .cm { color: #64748b; }
+.artifact .del { color: #fca5a5; display: block; }
+.artifact .add { color: #86efac; display: block; }
+.artifact .num { color: #f59e0b; }
+.artifact .punct { color: #94a3b8; }
+
+.fix-pending { margin: 0; padding: 0.7rem 0.85rem; border: 1px dashed var(--card-line); border-radius: 0.5rem; background: rgba(30,41,59,0.6); font-size: 0.83rem; color: var(--text-muted); }
+.fix-pending b { color: var(--text-subtle); font-weight: 600; }
+
+/* ── Also Cited ──────────────────────────────────────────────────────── */
+.also-cited { margin-top: 1.75rem; margin-bottom: 3rem; }
+.also-body { font-size: 0.87rem; color: var(--text-subtle); margin: 0 0 0.9rem; }
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.site-footer {
+  background: rgba(3, 5, 10, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 3.5rem 2rem 2.5rem;
+  margin-top: 2rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--card-line);
+}
+.footer-container {
+  max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3.5rem; padding-bottom: 2.5rem;
+}
+.footer-brand { margin-bottom: 0.9rem; }
+.footer-logo-text { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em; color: var(--text-main); text-transform: uppercase; }
+.footer-desc { font-size: 0.88rem; line-height: 1.6; color: var(--text-muted); max-width: 340px; margin: 0 0 1.25rem; }
+.footer-os-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; font-weight: 500; color: var(--text-subtle);
+  background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; padding: 0.3rem 0.8rem;
+}
+.os-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
+.footer-links-col h4 { color: var(--text-main); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin: 0 0 1.1rem; }
+.footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.15s ease; }
+.footer-links a:hover { color: var(--cyan); }
+.footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid var(--card-line); }
+.footer-bottom-container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: var(--text-faint); }
+.footer-bottom-container p { margin: 0; }
+
+/* ── Utility Classes ──────────────────────────────────────────────────── */
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.mt-0 { margin-top: 0 !important; }
+.mt-4 { margin-top: 1rem !important; }
+.mt-6 { margin-top: 1.5rem !important; }
+.mt-8 { margin-top: 2rem !important; }
+.mt-10 { margin-top: 2.5rem !important; }
+.w-full { width: 100% !important; }
+.w-100 { width: 100%; }
+.w-30 { width: 30%; }
+.w-40 { width: 40%; }
+.w-32 { width: 32%; }
+.w-48 { width: 48%; }
+
+/* ── Responsive Media Queries ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .footer-container { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 640px) {
+  .top-nav-container { padding: 0.9rem 1.25rem; }
+  .page-head { padding: 2rem 1.25rem 0; }
+  .stage { padding: 0 1rem; }
+  .card { padding: 1.25rem; border-radius: 0.7rem; }
+  .score-head { flex-direction: column-reverse; align-items: flex-start; gap: 1.1rem; }
+  .engines { grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); }
+  .plan-btn { width: 100%; }
+}
+
+@media (max-width: 400px) {
+  .page-head h1 { font-size: 1.75rem; }
+  .score-ring, .score-ring svg { width: 80px; height: 80px; }
+  .score-num { font-size: 1.55rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="top-nav">
+  <div class="top-nav-container">
+    <div class="top-nav-brand-wrapper">
+      <a href="#" class="top-nav-brand">
+        <span class="brand-logo-mark">AR</span>
+        <span class="brand-title">AEO Ready</span>
+      </a>
+      <span class="brand-subtitle">AEO READINESS ASSESSMENT</span>
+    </div>
+    <nav class="top-nav-links">
+      <a href="#" class="nav-link">How it Works</a>
+      <a href="#" class="nav-link nav-cta">Run Another</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <span class="lab-eyebrow">ANSWER ENGINE OPTIMIZATION REPORT</span>
+  <h1>Here's how AI sees linkup.so</h1>
+  <p><span class="hero-highlight">10 pages crawled</span> · robots.txt found · sitemap found. Full breakdown and copy-pasteable fixes below.</p>
+</div>
+
+<section class="stage">
+
+  <!-- SCORE CARD -->
+  <div class="card score-card">
+    <div class="score-head">
+      <div class="score-id">
+        <h2 class="source-name">www.linkup.so</h2>
+        <p class="source-sub">Assessed against 5 AEO readiness pillars</p>
+      </div>
+      <div class="score-big">
+        <div class="score-ring">
+          <svg viewBox="0 0 96 96">
+            <circle class="ring-bg" cx="48" cy="48" r="38" stroke-width="7"/>
+            <circle class="ring-fg" cx="48" cy="48" r="38" stroke-width="7"
+                    stroke-dasharray="238.76" stroke-dashoffset="119.38"/>
+          </svg>
+          <div class="score-num">50</div>
+        </div>
+        <span class="grade-band grade-c-bg">GRADE C</span>
+      </div>
+    </div>
+
+    <p class="label">Where the points went</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="axis-top"><span>Retrievability &amp; agent access</span><span class="of mono">20/20</span></div>
+        <div class="axis-bar"><div class="axis-fill w-100"></div></div>
+      </div>
+      <div class="pillar">
+        <div class="axis-top"><span>Structured meaning</span><span class="of mono">6/20</span></div>
+        <div class="axis-bar"><div class="axis-fill low w-30"></div></div>
+      </div>
+      <div class="pillar">
+        <div class="axis-top"><span>Agent-native readiness</span><span class="of mono">4/10</span></div>
+        <div class="axis-bar"><div class="axis-fill w-40"></div></div>
+      </div>
+      <div class="pillar">
+        <div class="axis-top"><span>Answer-shaped content</span><span class="of mono">8/25</span></div>
+        <div class="axis-bar"><div class="axis-fill low w-32"></div></div>
+      </div>
+      <div class="pillar">
+        <div class="axis-top"><span>Live AI visibility</span><span class="of mono">12/25</span></div>
+        <div class="axis-bar"><div class="axis-fill w-48"></div></div>
+      </div>
+    </div>
+
+    <div class="source-actions">
+      <button class="wrong-person">Re-run assessment →</button>
+    </div>
+  </div>
+
+  <!-- PLAN CARD -->
+  <div class="card plan-card">
+    <div class="plan-copy">
+      <p class="label mt-0">Automated Remediation</p>
+      <h3 class="plan-title">Download the fix plan</h3>
+      <p class="plan-sub">One Markdown file with every fix below — the evidence, the code, and the instructions. Drop it into Claude Code, Cursor, or ChatGPT to implement the fixes instantly.</p>
+    </div>
+    <button id="dl-plan-btn" class="plan-btn">Download .md</button>
+  </div>
+
+  <!-- ENGINES -->
+  <p class="section-label">What each answer engine says about you</p>
+  <div class="engines">
+    <div class="engine">
+      <span class="engine-band band-d">D</span>
+      <span class="engine-name">ChatGPT</span>
+      <div class="engine-stat"><span>Mentioned</span><b>2/5</b></div>
+      <div class="engine-stat"><span>Cited w/ link</span><b>2/5</b></div>
+    </div>
+    <div class="engine">
+      <span class="engine-band band-d">D</span>
+      <span class="engine-name">Claude</span>
+      <div class="engine-stat"><span>Mentioned</span><b>2/5</b></div>
+      <div class="engine-stat"><span>Cited w/ link</span><b>2/5</b></div>
+    </div>
+    <div class="engine">
+      <span class="engine-band band-d">D</span>
+      <span class="engine-name">Perplexity</span>
+      <div class="engine-stat"><span>Mentioned</span><b>2/5</b></div>
+      <div class="engine-stat"><span>Cited w/ link</span><b>2/5</b></div>
+    </div>
+    <div class="engine">
+      <span class="engine-band band-c">C</span>
+      <span class="engine-name">Grok</span>
+      <div class="engine-stat"><span>Mentioned</span><b>3/5</b></div>
+      <div class="engine-stat"><span>Cited w/ link</span><b>2/5</b></div>
+    </div>
+    <div class="engine engine-out">
+      <span class="engine-band band-out">—</span>
+      <span class="engine-name">Gemini</span>
+      <div class="engine-stat out">Not measured</div>
+    </div>
+  </div>
+  <p class="disclosure">Measured through each engine's own API using its native search. Not identical to what a signed-in human sees — no personalization, no chat memory. Directionally right, not a guarantee. Gemini didn't respond and is excluded from the score entirely.</p>
+
+  <!-- BUYER QUESTIONS -->
+  <p class="section-label mt-8">The 5 buyer questions we asked</p>
+  <div class="card queries-card">
+    <div class="chips">
+      <div class="chip partial">best search API for AI agents and RAG applications<i>~ 1/4</i></div>
+      <div class="chip win">Linkup vs Tavily<i>✓ 4/4</i></div>
+      <div class="chip lose">how much do AI web search APIs cost<i>× 0/4</i></div>
+      <div class="chip win">is Linkup reliable for production AI apps<i>✓ 4/4</i></div>
+      <div class="chip lose">how to give an LLM agent real-time web access<i>× 0/4</i></div>
+    </div>
+    <p class="queries-note">Counts are how many engines named you. Only the <em>alternatives</em> and <em>reviews</em> questions mention your brand — the rest test whether you surface when nobody asked for you.</p>
+  </div>
+
+  <!-- FIXES -->
+  <h2 class="results-title mt-10">10 things to fix, most damaging first</h2>
+  <div class="fixes">
+
+    <article class="fix card sev-high">
+      <div class="fix-head">
+        <span><span class="fix-badge">High</span><span class="fix-pts">+6 pts</span></span>
+      </div>
+      <h3 class="fix-title">Opening says plainly what this is and who it's for</h3>
+    </article>
+
+    <article class="fix card sev-high">
+      <div class="fix-head">
+        <span><span class="fix-badge">High</span><span class="fix-pts">+5 pts</span></span>
+        <span class="fix-where">organization.jsonld</span>
+      </div>
+      <h3 class="fix-title">Organization schema identifies the company</h3>
+      <p class="fix-why">No <code>Organization</code> JSON-LD anywhere we looked. This is the block that tells an engine you're one entity across your site and your social profiles.</p>
+      <div class="artifact">
+        <div class="artifact-bar">
+          <span class="artifact-name">Organization JSON-LD — paste into &lt;head&gt;</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  <span class="k">"@context"</span>: <span class="s">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="s">"Organization"</span>,
+  <span class="k">"name"</span>: <span class="s">"Linkup"</span>,
+  <span class="k">"url"</span>: <span class="s">"https://www.linkup.so/"</span>,
+  <span class="k">"logo"</span>: <span class="s">"{{LOGO_URL}}"</span>,
+  <span class="k">"description"</span>: <span class="s">"The production-grade Web Search API for AI. Used by McKinsey, SNCF, Cohere, Legora, Polymarket."</span>,
+  <span class="k">"sameAs"</span>: [
+    <span class="s">"https://www.linkedin.com/company/linkup-platform"</span>,
+    <span class="s">"https://x.com/Linkup_platform"</span>
+  ]
+}
+&lt;/script&gt;</code></pre>
+      </div>
+      <p class="fix-where-to"><b>Put it at</b> &lt;head&gt; on https://www.linkup.so/. The 2 sameAs links were read off your live site — nothing invented.</p>
+      <p class="fix-where-to warn"><b>⚠ Heads up.</b> {{LOGO_URL}} is a placeholder — no og:image on your homepage, so we have no logo URL to cite.</p>
+    </article>
+
+    <article class="fix card sev-high">
+      <div class="fix-head">
+        <span><span class="fix-badge">High</span><span class="fix-pts">+5 pts</span></span>
+      </div>
+      <h3 class="fix-title">First-party comparison and alternatives pages</h3>
+    </article>
+
+    <article class="fix card sev-medium">
+      <div class="fix-head">
+        <span><span class="fix-badge">Medium</span><span class="fix-pts">+3 pts</span></span>
+      </div>
+      <h3 class="fix-title">Product or Service schema describes what you sell</h3>
+      <p class="fix-why">No <code>Product</code>, <code>Service</code> or <code>SoftwareApplication</code> schema, so there's nothing machine-readable describing what you sell.</p>
+      <p class="fix-pending"><b>⧗ Pending.</b> Generating <b>Product / Service JSON-LD</b> needs the writing stage, which isn't live yet.</p>
+    </article>
+
+    <article class="fix card sev-medium">
+      <div class="fix-head">
+        <span><span class="fix-badge">Medium</span><span class="fix-pts">+3 pts</span></span>
+      </div>
+      <h3 class="fix-title">FAQ schema exposes your answers</h3>
+      <p class="fix-why">No <code>FAQPage</code> schema. This is the single most direct way to hand an engine a question-and-answer pair it can quote.</p>
+      <p class="fix-pending"><b>⧗ Pending.</b> Generating <b>FAQPage JSON-LD</b> drawn from your real on-site questions needs the writing stage, which isn't live yet.</p>
+    </article>
+
+    <article class="fix card sev-medium">
+      <div class="fix-head">
+        <span><span class="fix-badge">Medium</span><span class="fix-pts">+1 pt</span></span>
+      </div>
+      <h3 class="fix-title">Title, description and Open Graph are complete</h3>
+      <p class="fix-why">On your homepage, Open Graph tags are incomplete.</p>
+      <p class="fix-pending"><b>⧗ Pending.</b> Generating <b>a rewritten title and meta description</b> needs the writing stage, which isn't live yet.</p>
+    </article>
+
+    <article class="fix card sev-medium">
+      <div class="fix-head">
+        <span><span class="fix-badge">Medium</span><span class="fix-pts">+1 pt</span></span>
+      </div>
+      <h3 class="fix-title">Headings are phrased as questions</h3>
+    </article>
+
+    <article class="fix card sev-ahead">
+      <div class="fix-head">
+        <span><span class="fix-badge">Ahead of curve</span><span class="fix-pts">+2 pts</span></span>
+      </div>
+      <h3 class="fix-title">A machine-readable Markdown copy is available</h3>
+      <p class="fix-why">No machine-readable Markdown copy of your pages, via either <code>rel="alternate"</code> or content negotiation.</p>
+      <p class="fix-pending"><b>⧗ Pending.</b> Generating <b>a Markdown twin of your homepage</b> needs the writing stage, which isn't live yet.</p>
+    </article>
+
+    <article class="fix card sev-ahead">
+      <div class="fix-head">
+        <span><span class="fix-badge">Ahead of curve</span><span class="fix-pts">+2 pts</span></span>
+        <span class="fix-where">robots.txt</span>
+      </div>
+      <h3 class="fix-title">Content Signals state usage permissions</h3>
+      <p class="fix-why">No Content Signals in <code>robots.txt</code>. These state whether your content may be indexed, used to ground an answer, or used for training.</p>
+      <div class="artifact">
+        <div class="artifact-bar">
+          <span class="artifact-name">Content Signals — add to robots.txt</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="cm"># Content Signals: state how your content may be used.</span>
+<span class="cm">#   search   = appearing in a search index</span>
+<span class="cm">#   ai-input = used as grounding for a generated answer (RAG)</span>
+<span class="cm">#   ai-train = used to train or fine-tune a model</span>
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /</code></pre>
+      </div>
+      <p class="fix-where-to"><b>Put it at</b> https://www.linkup.so/robots.txt. Shown with the common stance: be findable and quotable, but don't be training data. Change any value to match what you actually want.</p>
+    </article>
+
+    <article class="fix card sev-ahead">
+      <div class="fix-head">
+        <span><span class="fix-badge">Ahead of curve</span><span class="fix-pts">+1 pt</span></span>
+      </div>
+      <h3 class="fix-title">An MCP endpoint is discoverable</h3>
+      <p class="fix-why">No MCP endpoint discoverable at <code>/.well-known/mcp.json</code>.</p>
+      <p class="fix-pending"><b>⧗ Pending.</b> Generating <b>an MCP endpoint descriptor</b> needs the writing stage, which isn't live yet.</p>
+    </article>
+
+  </div>
+
+  <!-- ALSO CITED -->
+  <div class="card also-cited">
+    <p class="label mt-0">Who got cited instead</p>
+    <p class="also-body">On the questions where you weren't cited, these domains were. Not a competitive ranking — just who currently owns the answers you're missing.</p>
+    <div class="chips">
+      <div class="chip">tavily.com<i>2 queries</i></div>
+      <div class="chip">brave.com<i>2 queries</i></div>
+      <div class="chip">openai.com<i>2 queries</i></div>
+      <div class="chip">websearchapi.ai<i>2 queries</i></div>
+      <div class="chip">firecrawl.dev<i>2 queries</i></div>
+      <div class="chip">vellum.ai<i>2 queries</i></div>
+      <div class="chip">perplexity.ai<i>1 query</i></div>
+      <div class="chip">github.io<i>1 query</i></div>
+    </div>
+  </div>
+
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <div class="footer-logo-text">AEO READY</div>
+      <p class="footer-desc">Open source answer engine optimization auditor &amp; remediation generator.</p>
+      <div class="footer-os-badge">
+        <span class="os-dot"></span>
+        <span>Open Source (MIT)</span>
+      </div>
+    </div>
+    <div class="footer-links-col">
+      <h4>Platform</h4>
+      <ul class="footer-links">
+        <li><a href="#" class="footer-run-now">Run Assessment &rarr;</a></li>
+        <li><a href="#how-it-works">Methodology</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <h4>Machine Readable</h4>
+      <ul class="footer-links">
+        <li><a href="/llms.txt">/llms.txt</a></li>
+        <li><a href="/llms-full.txt">/llms-full.txt</a></li>
+        <li><a href="/robots.txt">/robots.txt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <p>Answer Engine Optimization (AEO) Readiness Assessment</p>
+      <a href="https://github.com/jasher/answer-engine-optimization" target="_blank" rel="noopener" class="footer-bottom-gh">github.com/jasher/answer-engine-optimization</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function copyCode(btn){
+  const block = btn.closest('.artifact');
+  const code = block.querySelector('code').innerText;
+  navigator.clipboard.writeText(code).then(()=>{
+    btn.classList.add('copied');
+    const original = btn.textContent;
+    btn.textContent = 'Copied';
+    setTimeout(()=>{ btn.textContent = original; btn.classList.remove('copied'); }, 1500);
+  });
+}
+</script>
+
+</body>
+</html>

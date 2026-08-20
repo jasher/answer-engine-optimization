@@ -17,12 +17,9 @@ A web application that audits what AI answer engines (ChatGPT, Perplexity, Gemin
 .
 ├── index.html        # Main AEO web interface
 ├── app.js            # Frontend application logic & SSE pipeline handler
-├── style.css         # AEO-specific styles
+├── style.css         # Master AEO stylesheet
 ├── lib/
 │   └── linkup.js     # Linkup.so API client (Search, Deep Extraction & Competitors)
-├── css/
-│   ├── style.css     # Base layout, typography & theme stylesheet
-│   └── lab-share.css # Social share widget styles
 ├── js/
 │   └── lab-share.js  # Social share widget logic
 ├── images/           # Wordmark, logos and icons
