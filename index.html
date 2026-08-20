@@ -31,51 +31,21 @@
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Rajdhani:wght@600;700&family=Saira:wght@600;700;800&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://db.onlinewebfonts.com/c/8f2a9d487bbbc60974cd132fc3a63862?family=Aeonik+Regular"
-    />
-    <!-- Base stylesheet -->
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/lab-share.css" />
-    <!-- Main stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/lab-share.css" />
   </head>
   <body>
     <!-- Sticky Page-Wide Top Navigation -->
     <header class="top-nav">
       <div class="top-nav-container">
-        <!-- Logo Font Comparison (Upper Left) -->
-        <div class="logo-comparison-container">
-          <!-- Option 1: Saira Bold -->
-          <a href="/" class="logo-preview-card font-saira" title="Option 1: Saira Bold">
-            <div class="logo-mark">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9" stroke="#38bdf8"/>
-                <path d="M12 3a9 9 0 0 1 9 9" stroke="#818cf8"/>
-                <circle cx="12" cy="12" r="3.2" fill="#38bdf8"/>
-              </svg>
-            </div>
-            <span class="logo-text">AEO Ready</span>
-            <span class="font-tag">Saira</span>
+        <div class="top-nav-brand-wrapper">
+          <a href="/" class="top-nav-brand">
+            <img src="./images/logomark-tight.png" alt="AEO Ready Logo" class="brand-logo-mark" />
+            <span class="brand-title">AEO Ready</span>
           </a>
-
-          <div class="logo-divider"></div>
-
-          <!-- Option 2: Rajdhani Bold -->
-          <a href="/" class="logo-preview-card font-rajdhani" title="Option 2: Rajdhani Bold">
-            <div class="logo-mark">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9" stroke="#818cf8"/>
-                <path d="M12 3a9 9 0 0 1 9 9" stroke="#c084fc"/>
-                <circle cx="12" cy="12" r="3.2" fill="#818cf8"/>
-              </svg>
-            </div>
-            <span class="logo-text">AEO Ready</span>
-            <span class="font-tag">Rajdhani</span>
-          </a>
+          <span class="brand-subtitle">AEO READINESS ASSESSMENT</span>
         </div>
 
         <nav class="top-nav-links">
@@ -254,7 +224,13 @@
       <div class="footer-container">
         <div class="footer-brand-col">
           <div class="footer-brand">
-            <span class="footer-logo-text">AEO READY</span>
+            <div class="top-nav-brand-wrapper">
+              <a href="/" class="top-nav-brand">
+                <img src="./images/logomark-tight.png" alt="AEO Ready Logo" class="brand-logo-mark" />
+                <span class="brand-title">AEO Ready</span>
+              </a>
+              <span class="brand-subtitle">AEO READINESS ASSESSMENT</span>
+            </div>
           </div>
           <p class="footer-desc">
             An open source tool to test your website’s AI readability, schema markup, and crawler access.

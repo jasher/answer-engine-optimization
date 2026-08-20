@@ -77,19 +77,11 @@
     engineState[eng.engine] = eng;
     if (!enginesGrid) return;
 
-    const names = {
-      chatgpt: "ChatGPT",
-      claude: "Claude",
-      gemini: "Gemini",
-      grok: "Grok",
-      perplexity: "Perplexity"
-    };
-
     enginesGrid.innerHTML = Object.values(engineState).map(e => `
-      <div class="engine-card">
+      <div class="engine-card" style="border-top: 2px solid ${e.accentColor || '#38bdf8'};">
         <div class="engine-card-header">
-          <span class="engine-name">${names[e.engine] || e.engine}</span>
-          <span class="engine-band">Band ${e.band}</span>
+          <span class="engine-name">${e.name || e.engine}</span>
+          <span class="engine-band">${e.badge ? `<span style="font-size:0.75em; opacity:0.8; margin-right:4px;">${e.badge}</span>` : ''}Band ${e.band}</span>
         </div>
         <div class="engine-stat-row">
           <span>Brand Mention:</span>

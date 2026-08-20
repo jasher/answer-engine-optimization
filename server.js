@@ -4,7 +4,7 @@ import path from "node:path";
 import { crawlSite } from "./lib/crawler.js";
 import { runDeterministicAudit } from "./lib/audit.js";
 import { generateBuyerQueries } from "./lib/queries.js";
-import { evaluateEngine } from "./lib/engines.js";
+import { evaluateEngine, getModelsForTier } from "./lib/engines.js";
 import { generateFixes } from "./lib/fixes.js";
 import { buildMarkdownPlan } from "./lib/plan.js";
 import { saveReport, getReport, getPlanMd } from "./lib/storage.js";
@@ -114,14 +114,14 @@ const server = http.createServer(async (req, res) => {
         const queries = await generateBuyerQueries(cleanDomain, cleanDomain, audit.strippedText, OPENROUTER_KEY);
         sendSSE(res, "queries", { queries });
 
-        // Stage 4: Multi-Engine Evaluation
+        // Stage 4: Multi-Engine Evaluation (Config-Driven)
         sendSSE(res, "stage", { stage: 4, text: "Benchmarking live visibility across AI answer models..." });
-        const engineResults = await Promise.all([
-          evaluateEngine("chatgpt", queries, cleanDomain, cleanDomain, OPENROUTER_KEY),
-          evaluateEngine("claude", queries, cleanDomain, cleanDomain, OPENROUTER_KEY),
-          evaluateEngine("gemini", queries, cleanDomain, cleanDomain, OPENROUTER_KEY),
-          evaluateEngine("grok", queries, cleanDomain, cleanDomain, OPENROUTER_KEY)
-        ]);
+        const isPaid = payload.isPaid || false;
+        const modelsToRun = await getModelsForTier(isPaid ? "paid" : "free");
+
+        const engineResults = await Promise.all(
+          modelsToRun.map(modelCfg => evaluateEngine(modelCfg, queries, cleanDomain, cleanDomain, OPENROUTER_KEY))
+        );
 
         const allCompetitors = {};
         for (const eng of engineResults) {
