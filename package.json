@@ -4,6 +4,8 @@
   "description": "AEO Ready (AEOReady.xyz) — Answer Engine Optimization Audit & AI Readability Suite",
   "type": "module",
   "scripts": {
+    "build": "node --check server.js lib/*.js report.js app.js && node -e 'console.log(\"Build check passed: All modules compiled and syntax valid.\")'",
+    "start": "node server.js",
     "test": "node tests/linkup.test.js"
   },
   "keywords": [
