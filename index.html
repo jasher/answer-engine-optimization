@@ -36,15 +36,19 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <!-- Top Promo / Announcement Banner -->
+    <div class="top-banner">
+      <span>Answer Engine Optimization (AEO) <span class="banner-highlight">Readiness Assessment</span> <span class="banner-separator">✦</span> No Signup Required <span class="banner-separator">✦</span> Free</span>
+    </div>
+
     <!-- Sticky Page-Wide Top Navigation -->
     <header class="top-nav">
       <div class="top-nav-container">
         <div class="top-nav-brand-wrapper">
           <a href="/" class="top-nav-brand">
             <img src="./images/logomark-tight.png" alt="AEO Ready Logo" class="brand-logo-mark" />
-            <span class="brand-title">AEO Ready</span>
+            <span class="brand-title">AEO READY</span>
           </a>
-          <span class="brand-subtitle">AEO READINESS ASSESSMENT</span>
         </div>
 
         <nav class="top-nav-links">
@@ -58,11 +62,10 @@
     <div class="hero-wrapper hero-viewport">
       <!-- Hero Section -->
       <header class="hero">
-        <span class="lab-eyebrow">ANSWER ENGINE OPTIMIZATION</span>
         <!-- <h1>How does AI see <span class="hero-emoji">👀</span><br /><em>your</em> company?</h1> -->
         <h1>How does AI<br /><span class="hero-emoji">👀</span> see <em>you</em>?</h1>
         <p class="hero-subtitle">
-          <span class="hero-highlight">Run an audit</span>&nbsp; to learn how AI models (e.g., ChatGPT, Gemini, Claude*) read and index
+          <span class="hero-highlight">Run an audit</span>&nbsp; to learn how AI models (e.g., ChatGPT, Gemini, Claude) read and index
           your content. Then follow the custom &nbsp;<span class="hero-highlight">step-by-step recommendations</span> to improve your visibility.
         </p>
       </header>
@@ -93,6 +96,14 @@
           <span class="quota" id="quota"></span>
         </div>
       </section>
+
+      <!-- Below-Fold Discovery Indicator -->
+      <a href="#how-it-works" class="hero-scroll-hint" aria-label="Explore methodology">
+        <span>Explore 4-step methodology</span>
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
     </div>
 
     <!-- Run Stage -->
@@ -115,6 +126,7 @@
       <div class="card score-card is-hidden" id="score-card">
         <div class="score-head">
           <div class="score-id">
+            <span class="score-eyebrow">OVERALL READINESS SCORE</span>
             <h2 class="source-name" id="site-name"></h2>
             <p class="source-sub" id="site-sub"></p>
           </div>
@@ -137,7 +149,6 @@
 
         <div class="source-actions">
           <div class="fb" id="fb"></div>
-          <button class="wrong-person is-hidden" type="button" id="rescan">Re-run assessment →</button>
         </div>
       </div>
 
@@ -341,6 +352,39 @@
           setTimeout(() => input.focus(), 350);
         }
       });
+
+      // Show/hide top nav Get Started button when user scrolls past search section
+      (function() {
+        const navCta = document.getElementById('nav-get-started');
+        const searchSec = document.getElementById('search');
+        if (!navCta || !searchSec) return;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+              navCta.classList.add('is-visible');
+            } else {
+              navCta.classList.remove('is-visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        observer.observe(searchSec);
+      })();
+
+      // Fade out scroll hint once user starts scrolling, and keep it hidden
+      (function() {
+        const scrollHint = document.querySelector('.hero-scroll-hint');
+        if (!scrollHint) return;
+
+        function onFirstScroll() {
+          if (window.scrollY > 30) {
+            scrollHint.classList.add('is-hidden-hint');
+            window.removeEventListener('scroll', onFirstScroll);
+          }
+        }
+        window.addEventListener('scroll', onFirstScroll, { passive: true });
+      })();
 
       // Linkup Key Modal Management
       (function() {

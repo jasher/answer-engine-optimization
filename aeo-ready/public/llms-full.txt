@@ -1,0 +1,16 @@
+# AEO Readiness Check — Full Specification & Documentation
+
+A web application that audits what AI answer engines (ChatGPT, Perplexity, Gemini, Claude) can read from a website and provides actionable, copy-pasteable code fixes (JSON-LD structured data, `llms.txt`, `robots.txt` diffs, heading structures) to improve answer engine optimization.
+
+## Scoring Methodology (100 Points Total)
+
+1. **Crawler Access (25 pts)**: Ensures answer engine crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) are not blocked in `robots.txt` or headers.
+2. **Structured Data (25 pts)**: Checks for schema.org JSON-LD definitions (`Organization`, `SoftwareApplication`, `Product`, `FAQPage`).
+3. **Agent Readability (20 pts)**: Validates presence of `llms.txt`, clean markdown endpoints, and Content Signals.
+4. **Content Hierarchy (15 pts)**: Evaluates heading hierarchy (`h1`, `h2`, `h3`) and clarity for direct answer extraction.
+5. **Citation Share (15 pts)**: Live benchmark against category queries using Linkup search grounding to measure direct citation rates.
+
+## Integration & API
+
+- **Linkup.so Client**: Built-in zero-dependency search and competitor analysis client (`lib/linkup.js`).
+- **Export Format**: Complete markdown fix plan (`.md`) formatted for instant execution by AI coding agents (Cursor, Claude Code, ChatGPT).
